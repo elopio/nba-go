@@ -1,0 +1,23 @@
+name: nba-go
+version: master
+summary: The finest NBA CLI
+description: |
+  Watch NBA live play-by-play, game preview, box score and player information on
+  your console.
+  Best CLI tool for who is both a NBA fans and Engineer.
+  All data comes from stats.nba.com APIs.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode
+
+apps:
+  nba-go:
+    command: node $SNAP/bin/nba-go
+    plugs: [network]
+
+parts:
+  nba-go:
+    source: .
+    plugin: nodejs
+    node-package-manager: yarn
+    npm-run: [build]
